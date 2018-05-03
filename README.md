@@ -1,2 +1,2 @@
 # todo-react
-Practicing ES6, React, and design
+Practicing ES6, React, and design.
