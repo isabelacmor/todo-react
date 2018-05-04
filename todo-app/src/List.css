@@ -1,0 +1,14 @@
+.List {
+    background-color: pink;
+}
+
+.List ul {
+    display: flex;
+    flex-direction: column-reverse;
+}
+
+ul, li {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
