@@ -1,0 +1,27 @@
+.Input {
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
+    margin: 0px 20px;
+}
+
+.addItemButton {
+    border: none;
+    height: 25px;
+    text-transform: uppercase;
+    font-weight: 600;
+    font-size: 12px;
+    background-color: #3388d2;
+    color: white;
+    padding: 5px 10px;
+    cursor: pointer;
+}
+
+.inputItem {
+    height: 19px;
+    width: 100%;
+}
+
+.left {
+    flex: 1;
+}
