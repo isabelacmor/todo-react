@@ -1,14 +1,44 @@
-.List {
-    background-color: pink;
-}
-
 .List ul {
-    display: flex;
-    flex-direction: column-reverse;
+    max-height: 250px;
+    overflow-y: auto;
 }
 
 ul, li {
     padding: 0;
     margin: 0;
     list-style: none;
+}
+
+.listheader {
+    display: inline-flex;
+    justify-content: space-between;
+    width: 100%;
+    text-align: left;
+}
+
+.listheader span {
+    padding: 10px 20px 10px 20px;
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 14px;
+    color: #0286e4;
+}
+
+.hidebutton {
+    display: none;
+    height: 25px;
+    margin-top: 6px;
+}
+
+.displaybutton {
+    display:inline-flex;
+    height: 25px;
+    margin-top: 6px;
+}
+
+.emptyState {
+    margin: 20px;
+    color: #9e9c9c;
+    font-style: italic;
+    font-size: 13px;
 }

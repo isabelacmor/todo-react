@@ -6,18 +6,7 @@ import folderAddIcon from './img/folderadd.png';
 
 function RenderList(props) {
   console.log(props.title);
-  return <li><List id={props.id} title={props.title} items={props.data} addItem={props.addItem}/></li>;
-}
-
-function RenderUI(props) {
-  if (this.state.groups.length === 0) {
-    return <span>empty</span>;
-  } else {
-    return (
-    <ul>
-      {this.state.groups.map((group) => <RenderList key={group.groupId} id={group.groupId} title={group.title} data={group.data} addItem={this.addItem.bind(this)}/> )}
-    </ul>);
-  }
+  return <li className="mainlistitem"><List id={props.id} title={props.title} items={props.data} addItem={props.addItem} deleteGroup={props.deleteGroup} /></li>;
 }
 
 class App extends Component {
@@ -45,17 +34,29 @@ class App extends Component {
 
   addItem(groupId, data) {
     const item = {text: data, id: Date.now()};
-    this.state.groups[groupId].data.push(item);
+    let objIndex = this.state.groups.findIndex(e => e.groupId === groupId);
+
+    this.state.groups[objIndex].data.unshift(item);
     this.setState({data: this.state.groups});
     localStorage.setItem("data", JSON.stringify(this.state));
   }
 
   addGroup() {
-    let newId = this.state.groups.length;
+    let newId = 0;
+    if (this.state.groups.length > 0) {
+      newId = this.state.groups[0].groupId + 1;
+    }
     let name = this.AddGroupInputRef.current.value;
     
     const item = {title: name, groupId: newId, data: []};
-    this.state.groups.push(item);
+    this.state.groups.unshift(item);
+    this.setState({data: this.state.groups});
+    localStorage.setItem("data", JSON.stringify(this.state));
+  }
+
+  deleteGroup (groupId) {
+    console.log("deleting: " + groupId);
+    this.state.groups.splice(this.state.groups.findIndex(e => e.groupId === groupId),1);
     this.setState({data: this.state.groups});
     localStorage.setItem("data", JSON.stringify(this.state));
   }
@@ -88,12 +89,9 @@ class App extends Component {
           </div>
           <img onClick={this.toggleInput} src={folderAddIcon} />
         </div>
-        {/* <ul>
-          {this.state.groups.map((group) => <RenderList key={group.groupId} id={group.groupId} title={group.title} data={group.data} addItem={this.addItem.bind(this)}/> )}
-        </ul> */}
         {hasData ? (
-          <ul>
-            {this.state.groups.map((group) => <RenderList key={group.groupId} id={group.groupId} title={group.title} data={group.data} addItem={this.addItem.bind(this)}/> )}
+          <ul className="mainlist">
+            {this.state.groups.map((group) => <RenderList key={group.groupId} id={group.groupId} title={group.title} data={group.data} addItem={this.addItem.bind(this)} deleteGroup={this.deleteGroup.bind(this)} /> )}
           </ul>
         ) : (
           <span>empty</span>

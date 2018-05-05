@@ -1,5 +1,4 @@
 .App {
-  text-align: center;
   width: 30%;
   height: 100%;
   position: absolute;
@@ -37,9 +36,9 @@
 }
 
 .addGroup input {
-  height: 24px;
+  height: 25px;
   border: none;
-  padding: 0 10px 0 10px;
+  padding: 0 55px 0 10px;
 }
 
 .addGroup.hidden {
@@ -52,16 +51,17 @@
 
 .create {
   background-color: transparent;
-  border: none;
   font-size: 30px;
 }
 
 .confirm {
-  background-color: #3388d2;
-  border: none;
-  height: 25px;
-  color: white;
+  background-color: white;
+  height: 22px;
+  color: #3388d2;
   font-size: 10px;
+  margin-left: -55px;
+  border: none;
+  cursor: pointer;
 }
 
 .header {
@@ -69,13 +69,27 @@
   align-items: center;
   justify-content: space-between;
   padding: 0 20px 0 20px;
+  background-color: #3388d2;
+}
+
+.header h1 {
+  color: white;
 }
 
 .header img {
   height: 25px;
 }
 
-ul {
-  display: flex;
-  flex-direction: column-reverse;
+.mainlist > li:nth-child(even) {
+  border-bottom: 1px solid #3388d2;
+  background-color: #f1f1f1;
+}
+
+.mainlist > li:nth-child(odd) {
+  border-bottom: 1px solid #3388d2;
+  background-color: white;
+}
+
+.mainlist > li:last-child {
+  border: none;
 }
